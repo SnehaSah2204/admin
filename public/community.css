@@ -1,0 +1,446 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+  font-family: "Lato", sans-serif;
+  background-color: black;
+}
+h1 {
+  text-align: center;
+  margin-top: 5%;
+  color: white;
+  font-size: 4em;
+}
+.info {
+  width: 50%;
+  margin: auto;
+  background-color: black;
+  /* border: 1px solid red; */
+  height: 450px;
+  padding: 2%;
+  position: relative;
+}
+.details {
+  width: 100%;
+  position: relative;
+  height: 78px;
+  overflow: hidden;
+}
+.details input {
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding-top: 45px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background-color: black;
+}
+.details label {
+  color: #a4de02;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid white;
+}
+.details label::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px solid #a4de02;
+  transform: translateX(-100%);
+  transition: all 0.4s ease;
+}
+.content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+.details input:focus + .label-name .content-name,
+.details input:valid + .label-name .content-name {
+  transform: translateY(-90%);
+  /* font-size: 14px; */
+  color: white;
+  /* box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003; */
+}
+.details input:focus + .label-name::after,
+.details input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+.photoDetail label {
+  color: #a4de02;
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  font-size: 20px;
+  width: 25%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid black;
+  /* background-color: #20d84e; */
+}
+#loading{
+  /* background-color: #a4de02; */
+  
+  position: absolute;
+  bottom: 3%;
+  width: 150%;
+  height: 10px;
+  border-radius: 6%;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #a4de02;
+}
+#filling{
+  background-color: #20d84e;
+  box-shadow: 0 0 16px #30bd54;
+  position: absolute;
+  bottom: 3%;
+  margin: 0;
+  padding: 0%;
+  width: 150%;
+  left: -332px;
+  height: 10px;
+  border-radius: 6%;
+}
+.photoDetail input {
+  width: 50%;
+}
+.photoDetail label::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  width: 10%;
+  border-bottom: 2px solid black;
+}
+
+.switch {
+  top: 50%;
+  left: 140%;
+  width: 75px;
+  height: 40px;
+}
+
+.toggle {
+  position: absolute;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  -webkit-transition: border-color 0.6s ease-out;
+  transition: border-color 0.6s ease-out;
+  box-sizing: border-box;
+}
+
+.toggle.toggle-on {
+  border-color: rgb(255, 255, 255);
+  -webkit-transition: all 0.5s 0.15s ease-out;
+  transition: all 0.5s 0.15s ease-out;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 4px;
+  width: 28px;
+  bottom: 4px;
+  right: 39px;
+  background-color: #ffffff;
+  border-radius: 19px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
+  transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
+}
+
+.toggle-on .toggle-button {
+  top: 3px;
+  width: 65px;
+  bottom: 3px;
+  right: 3px;
+  border-radius: 23px;
+  background-color: #20d84e;
+  box-shadow: 0 0 16px #30bd54;
+  -webkit-transition: all 0.2s 0.1s, right 0.1s;
+  transition: all 0.2s 0.1s, right 0.1s;
+}
+
+.toggle-text-on {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 36px;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  cursor: pointer;
+
+  color: rgba(0, 0, 0, 0);
+}
+
+.toggle-on .toggle-text-on {
+  color: white;
+  -webkit-transition: color 0.3s 0.15s;
+  transition: color 0.3s 0.15s;
+}
+
+.toggle-text-off {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 6px;
+  line-height: 36px;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  color: #a4de02;
+}
+
+.toggle-on .toggle-text-off {
+  color: rgba(253, 0, 0, 0);
+}
+
+.glow-comp {
+  position: absolute;
+  opacity: 0;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  border-radius: 6px;
+  background-color: rgba(17, 167, 226, 0.1);
+  box-shadow: 0 0 12px rgba(45, 183, 238, 0.2);
+  -webkit-transition: opacity 4.5s 1s;
+  transition: opacity 4.5s 1s;
+}
+
+.toggle-on .glow-comp {
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.toggleButton {
+  /* background-color: white; */
+  height: 10%;
+  margin-top: 6%;
+  position: relative;
+}
+.toggleButton p {
+  font-size: 20px;
+  padding-top: 1%;
+  color: #a4de02;
+}
+.toggleButton2 p {
+  font-size: 20px;
+  padding-top: 8%;
+  color: #a4de02;
+}
+.switch {
+  position: absolute;
+  top: 0;
+  left: 25%;
+}
+.myToggles {
+  /* background-color: #20d84e; */
+  position: relative;
+}
+.toggleButton2 {
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+.switch2 {
+  position: absolute;
+  top: 0;
+  left: 155%;
+}
+.submitBtn {
+  color: #a4de02;
+  position: absolute;
+  right: 0;
+}
+#mySubmit{
+  display: none;
+}
+.submitBtn:hover {
+  color: aliceblue;
+}
+.myIcon {
+  position: absolute;
+  right: 5%;
+  bottom: 20%;
+  font-size: 24px;
+  z-index: 10;
+}
+.myIcon :hover {
+  color: aliceblue;
+}
+.addIcon {
+  position: absolute;
+  right: 0;
+  bottom: 9%;
+  height: 10px;
+  background-color: black;
+  box-shadow: 0 0 0 black;
+  border: none;
+}
+.addIconDiv{
+  margin: 0;
+  position: absolute;
+  right: 0;
+  bottom: 35%;
+  height: 40px;
+  background-color: black;
+  box-shadow: 0 0 0 black;
+  border: none;
+}
+.addicon2{
+  color: #a4de02;
+  font-size: 26px;
+ 
+ 
+}
+.detailed label {
+  color: #a4de02;
+  width: 100%;
+  height: 100%;
+}
+.add {
+  position: absolute;
+  bottom: 3%;
+  right: 0;
+  background-color: black;
+}
+@media (min-width: 935px) and (max-width: 1110px) {
+  .switch {
+    position: absolute;
+    top: 0;
+    left: 30%;
+  }
+  .toggleButton2 {
+    position: absolute;
+    left: 55%;
+    top: 0;
+  }
+  .switch2 {
+    position: absolute;
+    top: 0;
+    left: 155%;
+  }
+}
+@media (min-width: 575px) and (max-width: 934px) {
+  .info {
+    width: 60%;
+  }
+  h1 {
+    font-size: 3em;
+  }
+  .details input {
+    font-size: 12px;
+  }
+  .details label {
+    font-size: 16px;
+  }
+  .details input:focus + .label-name .content-name,
+  .details input:valid + .label-name .content-name {
+    font-size: 12px;
+  }
+  .toggleButton p {
+    font-size: 16px;
+  }
+  .toggleButton2 p {
+    font-size: 16px;
+  }
+  .switch {
+    position: absolute;
+    top: 0;
+    left: 85%;
+  }
+  .myToggles {
+    margin-top: 15%;
+  }
+  .toggleButton2 {
+    position: relative;
+    left: 0;
+    top: 113%;
+  }
+  .switch2 {
+    position: absolute;
+    top: 25%;
+    left: 85%;
+  }
+  .myIcon {
+    bottom: 14%;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 575px) {
+  .info {
+    width: 68%;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  .details input {
+    font-size: 8px;
+  }
+  .details label {
+    font-size: 14px;
+  }
+  i {
+    font-size: 14px;
+  }
+  .details input:focus + .label-name .content-name,
+  .details input:valid + .label-name .content-name {
+    font-size: 12px;
+  }
+  .toggleButton p {
+    font-size: 14px;
+  }
+  .toggleButton2 p {
+    font-size: 14px;
+  }
+  .switch {
+    position: absolute;
+    top: 0;
+    left: 85%;
+  }
+  .myToggles {
+    margin-top: 15%;
+  }
+  .toggleButton2 {
+    position: relative;
+    left: 0;
+  }
+  .toggleButton2 p {
+    font-size: 14px;
+    padding-top: 17%;
+    color: #a4de02;
+  }
+  .switch2 {
+    position: absolute;
+    top: 55%;
+    left: 85%;
+  }
+  .myIcon {
+    bottom: 10%;
+    font-size: 14px;
+  }
+}

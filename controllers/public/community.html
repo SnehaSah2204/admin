@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/746c2b5b92.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="/community.css" rel="stylesheet">
+    <title>Fimple</title>
+</head>
+<body>
+    <h1><a href="/adminpanel/home" style="text-decoration: none; color: white;">COMMUNITY</a> </h1>
+    <form action="/apic/community" method="POST" enctype="multipart/form-data">
+        <div class="info">
+        <div class="details">
+            <input type="text" name="name" autocomplete="false"  required>
+            <label for="name" class="label-name">
+                <span class="content-name">COMMUNITY NAME</span>
+            </label>
+        </div>
+        <div class="details">
+            <input type="text" name="Admin" autocomplete="off" required>
+            <label for="Admin" class="label-name">
+                <span class="content-name">ADMIN EMAIL</span>                
+               <i class="fas fa-user-plus myIcon"></i>
+            </label>
+           <div class="add">
+            <button  class="addIcon"  onclick="add()" style="height: 50px;">CLICK ME</button>  
+        </div>
+        </div>
+            <div class="details" id="1" style="display: none;">
+                <input placeholder="Another Admin" type="text" name="Admin" autocomplete="off" >
+                <label for="Admin" class="label-name">
+                                    
+                    <i class="fas fa-user-minus myIcon"></i>
+                </label>
+                <div class="add">
+                <button  class="addIcon"  onclick="sub('1')" style="height: 50px;">CLICK ME</button>  
+            </div>
+        </div>
+
+        <div class="details">
+            <input type="text" name="Description" autocomplete="off" required>
+            <label for="Description" class="label-name">
+                <span class="content-name">DESCRIPTION</span>
+            </label>
+        </div>
+    
+
+        <div class="myToggles">
+        <div class="toggleButton">
+            <p>MESSAGES</p>
+            <div class="togglem switch">
+                <div class='toggle-text-off'>OFF</div>
+                <div class='glow-comp'></div>
+                <div class='toggle-button'></div>
+                <div class='toggle-text-on'>ON</div>
+        </div>
+        </div>
+        <input type="checkbox" name ="message" id="msg" style="display: none;">
+
+        <div class="toggleButton2">
+            <p>POSTS</p>
+            <div class="togglep switch switch2 ">
+                <div class='toggle-text-off'>OFF</div>
+                <div class='glow-comp'></div>
+                <div class='toggle-button'></div>
+                <div class='toggle-text-on'>ON</div>
+        </div>
+        </div>
+        <input type="checkbox" name="post" id="post" style="display: none;">
+        <input type="text" name = "src"  style="display: none;" id="txt">    
+    </div>
+    
+    <div class="details photoDetail">
+        <input type="button" class="photoInput"  autocomplete="off" required 
+        onclick="document.getElementById('getFile').click()"> </input>
+        <input type='file' name="photo" accept="image/*" id="getFile" onchange="upload()" style="display: none;"  class="photoInput">
+        <label for="Description" class="label-name">
+        <div id="loading" ><div id="filling"></div></div>
+            <span class="content-name" style="color:#a4de02 ;">PHOTO &nbsp;&nbsp;<i class="fas fa-image" style="color:a4de02; font-size: 20px;"></i></span>        
+        </label>
+    </div>
+    <!-- <button onclick="upload()" >upload</button> -->
+    <button type="submit" class="btn btn-lg submitBtn" id="mySubmit"><i class="fas fa-plus " style="color: #a4de02;"></i> &nbsp;Create Community</button>
+
+    </div>
+</form>
+    <script>
+    var count=0;
+    function add(){
+        count++;
+        if(count==1){      
+            document.getElementById("1").style.display = "block";
+        }
+      }
+      function sub(id){
+        count--;
+        document.getElementById("1").style.display = "none";
+      }
+    </script>
+        <!-- <script>
+            function preview_image(event) {
+              var reader = new FileReader();
+              reader.onload = function(){
+                var output = document.getElementById('txt');
+                output.value = reader.result;
+              }
+              alert("hi");
+              reader.readAsDataURL(event.target.files[0]);
+            }
+    
+            function show(){
+                alert(document.getElementById('output_image').src);
+            }
+          </script> -->
+          <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+          <script src="/uploaded.js">
+          </script>
+    <script>
+$('.togglem').click(function(e){
+  e.preventDefault(); // The flicker is a codepen thing
+  $('#msg').click();
+  $(this).toggleClass('toggle-on');
+});
+$('.togglep').click(function(e){
+  e.preventDefault(); // The flicker is a codepen thing
+  $('#post').click();
+  $(this).toggleClass('toggle-on');
+});
+
+    </script>
+</body>
+</html>

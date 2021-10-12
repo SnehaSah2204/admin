@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/746c2b5b92.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200&display=swap" rel="stylesheet">
+    <title>Document</title>
+
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+      <link href="/login.css" rel="stylesheet">
+
+</head>
+<body class="text-center">
+    
+    <main class="form-signin">
+      <form action="/adminpanel/login" method="POST"> 
+        <img class="mb-4" src="/fimplepng.png" alt="" width="150px" height="100">
+        <h1 class="h3 mb-3 fw-normal welcome"><strong>ADMIN PANEL</strong></h1>
+        <p>Please Login to Continue</p>
+    
+        <div class="form-floating">
+          <input type="text" class="form-control" id="email" placeholder="name@example.com" autocomplete="off" name="id">
+          <label for="id" style="color: #9D9D9D; " autocomplete="none"><i class="fas fa-user"></i>&nbsp;&nbsp;User ID</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control myInput" id="password" placeholder="Password" name="password">
+          <label for="password" style="color: #9D9D9D;"><i class="fas fa-lock"></i>&nbsp;&nbsp;Password</label>
+        </div>
+        <% if(error!="null"){%>
+         <p style="color: red;"><%=error%></p>
+        <%}%>
+        <button class="w-100 btn btn-lg signin" type="submit"><strong>LOGIN</strong></button>
+      </form>
+    </main>
+</body>
+</html>

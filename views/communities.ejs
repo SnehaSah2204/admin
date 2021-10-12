@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/746c2b5b92.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="/comfeed.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h1><a href="/adminpanel/home" style="text-decoration: none; color: white; cursor: pointer;">COMMUNITY</a> </h1>
+    <div class="feed">
+        <% communities.forEach(community=>{ %>
+            <% var comId=community.id%>
+        <div class="card" >
+            <div class="card-body">
+              <h2 class="card-title"><%=community.name%> &nbsp;&nbsp;
+                <i class="fas fa-edit" onclick="editpost('<%=community.id%>')" style="font-size:24px; color:#0492c2"></i>&nbsp;<i class="fas fa-trash" onclick="deletepost('<%=community.id%>')" style="font-size:24px; color:#b01030"></i></h2>
+              <br>
+              <div class="cardRight">
+                  <img class="profilePhoto" src=<%=community.photo%>>
+              </div>
+              <div class="cardLeft">
+                  <div class="cardContent">
+                   
+                <p class="card-text"><strong>ADMIN :</strong>
+                    <% community.admin.forEach(admin=>{%>
+                        <%=admin%>&nbsp;&nbsp;
+                </span>
+            <%})%>
+                    </p>
+
+                <p class="card-text"><strong>DESCRIPTION :</strong> <%=community.description%></p>
+                <p class="card-text"><strong>MESSAGES :</strong> <%=community.ischatable%></p>
+                <p class="card-text"><strong>POSTS :</strong> <%=community.ispostable%></p>
+            </div>
+            </div>
+          
+            </div>
+        </div>
+        <%}); %> 
+    </div>
+    
+</body>
+<script>
+    
+    function editpost(id){
+        window.location.href = ( "/adminpanel/communities/"+id);
+    }
+    function deletepost(id){
+       
+        const url="/apic/community/delete/"+id;
+
+    window.location.href = ( "/apic/community/delete/"+id);
+}
+
+</script>
+</html>

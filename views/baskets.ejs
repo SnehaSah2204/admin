@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/746c2b5b92.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="/comfeed.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h1><a href="/adminpanel/home" style="text-decoration: none; color: white; cursor: pointer;">BASKET</a> </h1>
+    <div class="feed">
+        <% baskets.forEach(basket=>{ %>
+            
+        <div class="card" >
+            <div class="card-body">
+              <h2 class="card-title"><%=basket.name%> &nbsp;&nbsp;
+              <i class="fas fa-edit" onclick="editpost('<%=basket.id%>')" style="font-size:24px; color:#0492c2"></i>&nbsp;<i class="fas fa-trash" onclick="deletepost('<%=basket.id%>')" style="font-size:24px; color:#b01030"></i></h2>
+              <br>
+              <div class="cardRight">
+                  <img class="profilePhoto" src=<%=basket.photo%>>
+              </div>
+              <div class="cardLeft">
+
+                <p class="card-text"><strong>AUTHOR :</strong>
+                        <%=basket.author%>
+                    </p>
+
+                <p class="card-text"><strong>DESCRIPTION :</strong> <%=basket.description%></p>
+                <p class="card-text"><strong>Stocks:</strong>
+                    <span>
+                        <% basket.stocks.forEach(bask=> { %>
+                            <%=bask%>&nbsp;&nbsp;
+                    </span>
+                <%})%>
+            </p>
+                <p class="card-text"><strong>Tag :</strong> <%=basket.tags%></p>
+            </div>
+          
+            </div>
+        </div>
+        <%}); %> 
+    </div>
+    
+</body>
+<script> 
+    function editpost(id){
+        window.location.href = ( "/adminpanel/editbasket/"+id);
+    }
+    function deletepost(id){
+       
+        const url="/apib/baskets/delete/"+id;
+        var result = confirm("Are you sure to delete?");
+        if(result){
+            window.location.href = ( "/apib/basket/delete/"+id);
+
+        }
+    // window.location.href = ( "/apib/basket/delete/"+id);
+}
+
+
+</script>
+</html>
